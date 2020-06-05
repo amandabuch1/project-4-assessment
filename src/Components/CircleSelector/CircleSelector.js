@@ -1,32 +1,42 @@
-import React from "react";
-import "./CircleSelector.css";
+import React, { Component } from 'react';
+import './CircleSelector.css';
 
-const Buttons = props => {
+const CircleSelector = props => {
 
-   
-    return(
+    const handleChange = event => {
+        props.handleSelect(event.target.value)
+      }
 
-        <div>
-            
-                {/* {['A', 'B', 'C'].map(key => 
-                    <button 
-                    className={key === props.selectedButton ? '.CircleSelector button.selected ' : '.CircleSelector button'} 
-                    type="button" style={{ width: '25%', border: "none" }} 
-                    key={key} onClick={this.buttonSelected(key)}>{key}</button>
-                )} */}
-        </div>
-        
-        // <div className="CircleSelector">
-        //     <input 
-        //     type="Buttons"
-        //     value={this.props.state.SelectedButon ? "Circle 1 Selected": "Select Circle 1"}
+    if (props.selected)
+        return(
+            <div className='CircleSelector' >
 
-        //     >
-           
-        //     </input>
-            
-        // </div>
-        
-    )
+                <button 
+                    className={props.selected === "one" ? "selected" : ""} 
+                    value="one" 
+                    onClick={handleChange}>{props.selected === "one" ? "Circle 1 Selected" : "Select Circle 1" }
+                </button>
+
+                <button 
+                    className={props.selected === "two" ? "selected" : ""} 
+                    value="two" 
+                    onClick={handleChange}>{props.selected === "two" ? "Circle 2 Selected" : "Select Circle 2" }
+                </button>
+
+                <button 
+                    className={props.selected === "three" ? "selected" : ""} 
+                    value="three" 
+                    onClick={handleChange}>{props.selected === "three" ? "Circle 3 Selected" : "Select Circle 3" }
+                </button>
+
+                <button 
+                    className={props.selected === "four" ? "selected" : ""} 
+                    value="four"
+                    onClick={handleChange}>{props.selected === "four" ? "Circle 4 Selected" : "Select Circle 4" }
+                </button>
+
+            </div>
+        );
 }
-export default Buttons;
+
+export default CircleSelector
